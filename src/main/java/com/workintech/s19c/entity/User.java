@@ -1,5 +1,6 @@
 package com.workintech.s19c.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class User {
     private String email;
 
     // Bir kullanıcı birden fazla tweet'e sahip olabilir.
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Tweet> tweets;
 

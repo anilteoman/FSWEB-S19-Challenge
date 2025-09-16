@@ -23,7 +23,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // CSRF korumasını kapat (API için genelde kapatılır)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register/**", "/login/**").permitAll() // Kayıt ve giriş endpointlerine erişimi herkese aç
+
+                       //REQUEST MATCHERS "/register/**", "/login/**" TEST AMACİYLA KALDİRİLDİ.
+                        .requestMatchers("/**").permitAll() // Kayıt ve giriş endpointlerine erişimi herkese aç
                         .anyRequest().authenticated() // Diğer tüm isteklere sadece kimliği doğrulanmış kullanıcılar erişebilir
                 );
 
