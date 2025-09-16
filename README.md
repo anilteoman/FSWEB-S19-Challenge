@@ -1,2 +1,4 @@
-# s19c
-WiT FSWEB S19 Challenge - Twitter Backend
+# S19Challenge
+WiT FSWEB S19 Challenge - Twitter Backend - Anıl Teoman
+
+
