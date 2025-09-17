@@ -60,9 +60,9 @@ public class SecurityConfig {
     @Bean
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration();
-        configuration.addAllowedOrigin("http://localhost:3200"); // React uygulamanızın çalıştığı adres
-        configuration.addAllowedMethod("*"); // GET, POST, PUT, DELETE vb. tüm metotlara izin ver
-        configuration.addAllowedHeader("*"); // Tüm başlıklara izin ver
+        configuration.addAllowedOrigin("http://localhost:3200");
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);
 
         org.springframework.web.cors.UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
