@@ -46,12 +46,8 @@ public class TweetController {
     // PUT /tweet/:id
     @PutMapping("/{id}")
     public ResponseEntity<TweetDto> updateTweet(@PathVariable("id") Long tweetId, @RequestBody TweetUpdateDto updatedTweetDto) {
-        try {
-            TweetDto tweet = tweetService.updateTweet(tweetId, updatedTweetDto.getContent());
-            return ResponseEntity.ok(tweet);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        TweetDto tweet = tweetService.updateTweet(tweetId, updatedTweetDto.getContent());
+        return ResponseEntity.ok(tweet);
     }
 
     // DELETE /tweet/:id
