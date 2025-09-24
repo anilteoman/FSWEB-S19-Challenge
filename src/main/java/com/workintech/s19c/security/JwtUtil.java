@@ -17,33 +17,25 @@ import java.util.function.Function;
 public class JwtUtil {
 
     // Güvenlik için token'ın gizli anahtarı
-    // NOT: Gerçek projelerde bu, application.properties'den okunmalıdır.
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     // Token oluşturma
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
+        return Jwts.builder().setClaims(claims).setSubject(userDetails.getUsername()).setIssuedAt(new Date(System.currentTimeMillis())).setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)).signWith(key, SignatureAlgorithm.HS256).compact();
     }
 
-    // Token'dan kullanıcı adını çıkarma
+
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
-    // Token'ın geçerliliğini doğrulama
+
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    // Yardımcı metotlar
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }

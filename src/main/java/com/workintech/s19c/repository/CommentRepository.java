@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    // Özel sorgular buraya eklenebilir, örneğin bir tweete ait tüm yorumları getirmek için.
-    // List<Comment> findByTweetId(Long tweetId);
+
 }
